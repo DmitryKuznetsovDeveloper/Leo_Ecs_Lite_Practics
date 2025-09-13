@@ -21,6 +21,18 @@ namespace ECS.Services
             return ref data;
         }
         
+        public ref T AddOrReplaceComponent<T>(T component) where T : struct
+        {
+            var pool = _world.GetPool<T>();
+    
+            if (pool.Has(Id))
+                pool.Del(Id);
+
+            ref var data = ref pool.Add(Id);
+            data = component;
+            return ref data;
+        }
+        
         public ref T GetComponent<T>() where T : struct
         {
             return ref _world.GetPool<T>().Get(Id);

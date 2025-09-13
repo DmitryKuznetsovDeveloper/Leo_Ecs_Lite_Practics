@@ -1,4 +1,5 @@
 ﻿using System;
+using ECS.Services;
 using UnityEngine;
 
 namespace ECS.Components
@@ -7,5 +8,6 @@ namespace ECS.Components
     public struct TransformView
     {
         public Transform Value;
+        public EntityProvider Provider;
     }
 }

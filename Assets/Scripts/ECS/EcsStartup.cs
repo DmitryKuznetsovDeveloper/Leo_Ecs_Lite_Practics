@@ -34,7 +34,7 @@ namespace ECS
                 .Add(new MovementSystem())
                 .Add(new FireRequestSystem())
                 .Add(new SpawnRequestSystem())
-                .Add(new DespawnSystem())
+                .Add(new DespawnAfterTimeSystem())
                 .Add(new TransformViewSystem());
 
 #if UNITY_EDITOR

@@ -17,7 +17,11 @@ namespace ECS.Views
             entity.AddComponent(new Rotation { Value = transform.rotation });
             entity.AddComponent(new MoveDirection { Value = transform.forward });
             entity.AddComponent(new MoveSpeed { Value = _moveSpeed });
-            entity.AddComponent(new TransformView { Value = transform });
+            entity.AddComponent(new TransformView
+            {
+                Value = transform,
+                Provider = this
+            });
             entity.AddComponent(new BulletWeapon
             {
                 FirePoint = _firePoint,
