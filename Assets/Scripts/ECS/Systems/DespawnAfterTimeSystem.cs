@@ -8,9 +8,9 @@ namespace ECS.Systems
 {
     public sealed class DespawnAfterTimeSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<DespawnAfterTime, TransformView>> _filter = default;
-        private readonly EcsPoolInject<DespawnAfterTime> _despawnPool = default;
-        private readonly EcsPoolInject<TransformView> _viewPool = default;
+        private readonly EcsFilterInject<Inc<DespawnAfterTime, TransformView>> _filter;
+        private readonly EcsPoolInject<DespawnAfterTime> _despawnPool;
+        private readonly EcsPoolInject<TransformView> _viewPool;
 
         public void Run(IEcsSystems systems)
         {

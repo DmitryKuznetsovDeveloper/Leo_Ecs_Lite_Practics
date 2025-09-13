@@ -1,10 +1,8 @@
 using System;
-using Client;
 using ECS.Services;
 using ECS.Systems;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using UnityEngine;
 using Zenject;
 
 namespace ECS
@@ -48,12 +46,6 @@ namespace ECS
 
         public void Tick()
         {
-            if (_systems == null)
-            {
-                Debug.Log("[ECS] _systems is null in Tick!");
-                return;
-            }
-            
             _systems?.Run();
         }
 

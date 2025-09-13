@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ECS.Systems
 {
-    public class MovementSystem : IEcsPostRunSystem
+    public sealed class MovementSystem : IEcsPostRunSystem
     {
        private readonly EcsFilterInject<Inc<MoveDirection, MoveSpeed, Position>> _filter;
        

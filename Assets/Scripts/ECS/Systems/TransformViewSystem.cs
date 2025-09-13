@@ -2,7 +2,7 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 
-namespace Client
+namespace ECS.Systems
 {
     public sealed class TransformViewSystem : IEcsPostRunSystem
     {

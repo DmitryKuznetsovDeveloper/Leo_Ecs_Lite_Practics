@@ -12,10 +12,4 @@ namespace ECS.Components
         public Vector3 Position;
         public Quaternion Rotation;
     }
-    
-    [Serializable]
-    public struct DespawnAfterTime
-    {
-        public float RemainingTime;
-    }
 }
