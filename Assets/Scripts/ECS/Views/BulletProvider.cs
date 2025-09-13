@@ -4,25 +4,19 @@ using UnityEngine;
 
 namespace ECS.Views
 {
-    public sealed class CharacterProvider : EntityProvider
+    public class BulletProvider : EntityProvider
     {
-        [SerializeField] private Transform _firePoint;
-        [SerializeField] private BulletProvider _bulletPrefab;
-        [SerializeField] private float _moveSpeed = 5f;
-
+        [SerializeField] private float _moveSpeed;
+        [SerializeField] private int _prewarm = 5;
+        
         public override void Install(Entity entity)
         {
-            entity.AddComponent(new PlayerTag());
             entity.AddComponent(new Position { Value = transform.position });
             entity.AddComponent(new Rotation { Value = transform.rotation });
             entity.AddComponent(new MoveDirection { Value = transform.forward });
             entity.AddComponent(new MoveSpeed { Value = _moveSpeed });
             entity.AddComponent(new TransformView { Value = transform });
-            entity.AddComponent(new BulletWeapon
-            {
-                FirePoint = _firePoint,
-                BulletPrefab = _bulletPrefab,
-            });
+            entity.AddComponent(new DespawnAfterTime { RemainingTime = 3f });
         }
     }
 }

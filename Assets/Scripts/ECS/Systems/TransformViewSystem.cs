@@ -6,8 +6,8 @@ namespace Client
 {
     public sealed class TransformViewSystem : IEcsPostRunSystem
     {
-        private readonly EcsFilterInject<Inc<TransformView, Position>> _filter = default;
-        private readonly EcsPoolInject<Rotation> _rotationPool = default;
+        private readonly EcsFilterInject<Inc<TransformView, Position>> _filter;
+        private readonly EcsPoolInject<Rotation> _rotationPool;
 
         public void PostRun(IEcsSystems systems)
         {

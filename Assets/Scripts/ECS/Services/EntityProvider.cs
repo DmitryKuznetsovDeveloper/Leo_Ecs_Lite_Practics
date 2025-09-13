@@ -15,13 +15,13 @@ namespace ECS.Services
             _registry.RegisterInstaller(this);
         }
 
+        public abstract void Install(Entity entity);
+
         public void InstallToWorld(EcsWorld world)
         {
             int id = world.NewEntity();
             var entity = new Entity(world, id);
             Install(entity);
         }
-
-        protected abstract void Install(Entity entity);
     }
 }

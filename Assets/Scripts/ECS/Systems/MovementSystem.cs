@@ -1,4 +1,5 @@
 ﻿using ECS.Components;
+using ECS.Services;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace ECS.Systems
 {
     public class MovementSystem : IEcsPostRunSystem
     {
-       private readonly EcsFilterInject<Inc<MoveDirection, MoveSpeed, Position>> _filter = default;
+       private readonly EcsFilterInject<Inc<MoveDirection, MoveSpeed, Position>> _filter;
        
         public void PostRun(IEcsSystems systems)
         {

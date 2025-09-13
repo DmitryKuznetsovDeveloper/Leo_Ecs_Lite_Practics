@@ -1,26 +1,30 @@
 ﻿using System.Collections.Generic;
-using ECS.Views;
 using Leopotam.EcsLite;
 
 namespace ECS.Services
 {
     public sealed class EntityProviderRegistry
     {
-        private readonly List<EntityProvider> _installers = new();
+        private readonly List<EntityProvider> _providers = new();
 
         public void RegisterInstaller(EntityProvider provider)
         {
-            _installers.Add(provider);
+            _providers.Add(provider);
         }
 
         public void Initialize(EcsWorld world)
         {
-            foreach (var installer in _installers)
+            foreach (var installer in _providers)
             {
                 installer.InstallToWorld(world);
             }
 
-            _installers.Clear();
+            _providers.Clear();
+        }
+        
+        public void Dispose()
+        {
+            _providers.Clear();
         }
     }
 }
