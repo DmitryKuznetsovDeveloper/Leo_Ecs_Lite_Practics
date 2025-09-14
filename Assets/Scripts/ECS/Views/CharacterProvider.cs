@@ -17,6 +17,7 @@ namespace ECS.Views
             entity.AddComponent(new Rotation { Value = transform.rotation });
             entity.AddComponent(new MoveDirection { Value = transform.forward });
             entity.AddComponent(new MoveSpeed { Value = _moveSpeed });
+            entity.AddOrReplaceComponent(new Health { Value = 100f });
             entity.AddComponent(new TransformView
             {
                 Value = transform,

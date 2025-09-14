@@ -6,6 +6,7 @@ namespace ECS.Services
 {
     public abstract class EntityProvider : MonoBehaviour
     {
+        public int EntityId { get; private set; }
         private EntityProviderRegistry _registry;
 
         [Inject]
@@ -20,6 +21,7 @@ namespace ECS.Services
         public void InstallToWorld(EcsWorld world)
         {
             int id = world.NewEntity();
+            EntityId = id;
             var entity = new Entity(world, id);
             Install(entity);
         }

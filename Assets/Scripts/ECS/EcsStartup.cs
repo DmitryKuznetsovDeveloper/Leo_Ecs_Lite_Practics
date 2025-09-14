@@ -13,6 +13,8 @@ namespace ECS
         private EcsWorld _worldGame;
         private EcsWorld _worldEvents;
         private IEcsSystems _systems;
+        
+        private SpawnService _spawnService;
 
         public EcsStartup(EntityProviderRegistry registry)
         {
@@ -23,6 +25,7 @@ namespace ECS
         {
             _worldGame = new EcsWorld();
             _worldEvents = new EcsWorld();
+            _spawnService = new SpawnService();
             _systems = new EcsSystems(_worldGame, WorldNames.GAME)
                 .AddWorld(_worldEvents, WorldNames.EVENTS)
                 .Add(new OneFrameCleanupSystemGroup(_worldGame))
@@ -31,8 +34,14 @@ namespace ECS
                 .Add(new PlayerFireSystem())
                 .Add(new MovementSystem())
                 .Add(new FireRequestSystem())
-                .Add(new SpawnRequestSystem())
-                .Add(new DespawnAfterTimeSystem())
+                .Add(new SpawnRequestSystem(_spawnService))
+                //Colision
+                .Add(new CollisionRequestSystem())
+                .Add(new DamageOnCollisionRequestSystem())
+                .Add(new ApplyDamageSystem())
+                .Add(new DespawnSystem())
+                
+                //View
                 .Add(new TransformViewSystem());
 
 #if UNITY_EDITOR

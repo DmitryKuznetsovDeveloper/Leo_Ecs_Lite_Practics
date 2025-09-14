@@ -5,10 +5,9 @@ namespace ECS.Components
 {
     [OneFrame]
     [Serializable]
-    public struct DamageRequest
+    public struct CollisionRequest
     {
         public int Source;
         public int Target;
-        public float Value; 
     }
 }

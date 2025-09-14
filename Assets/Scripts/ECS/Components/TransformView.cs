@@ -1,6 +1,7 @@
 ﻿using System;
 using ECS.Services;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ECS.Components
 {

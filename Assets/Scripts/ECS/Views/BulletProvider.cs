@@ -7,7 +7,6 @@ namespace ECS.Views
     public class BulletProvider : EntityProvider, IPoolableProvider
     {
         [SerializeField] private float _moveSpeed;
-        [SerializeField] private int _prewarm = 5;
         
         private IGameObjectPool _pool;
 
@@ -31,7 +30,14 @@ namespace ECS.Views
                 Value = transform,
                 Provider = this
             });
-            entity.AddComponent(new DespawnAfterTime { RemainingTime = 3f });
+            entity.AddOrReplaceComponent(new DespawnAfterTime { RemainingTime = 3f });
+            entity.AddOrReplaceComponent(new Damage { Value = 10 });
+            entity.AddOrReplaceComponent(new CollisionCheck
+            {
+                Position = transform.position,
+                Radius = 0.25f,
+                LayerMask = LayerMask.GetMask("Enemies")
+            });
         }
     }
 }
