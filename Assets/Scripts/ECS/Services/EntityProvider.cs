@@ -15,6 +15,8 @@ namespace ECS.Services
             _registry = registry;
             _registry.RegisterInstaller(this);
         }
+        
+        public void BindEntityId(int id) => EntityId = id;
 
         public abstract void Install(Entity entity);
 

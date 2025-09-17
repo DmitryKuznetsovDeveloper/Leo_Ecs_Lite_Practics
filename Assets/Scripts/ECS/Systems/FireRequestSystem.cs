@@ -30,6 +30,7 @@ namespace ECS.Systems
                     Prefab = weapon.BulletPrefab,
                     Position = weapon.FirePoint.position,
                     Rotation = weapon.FirePoint.rotation,
+                    OwnerEntity = entity,
                 };
             }
         }

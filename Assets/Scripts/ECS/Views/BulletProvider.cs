@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ECS.Views
 {
-    public class BulletProvider : EntityProvider, IPoolableProvider
+    public sealed class BulletProvider : EntityProvider, IPoolableProvider
     {
         [SerializeField] private float _moveSpeed;
         
@@ -30,13 +30,13 @@ namespace ECS.Views
                 Value = transform,
                 Provider = this
             });
-            entity.AddOrReplaceComponent(new DespawnAfterTime { RemainingTime = 3f });
+            entity.AddOrReplaceComponent(new DespawnAfterTime { RemainingTime = 20f });
             entity.AddOrReplaceComponent(new Damage { Value = 10 });
             entity.AddOrReplaceComponent(new CollisionCheck
             {
                 Position = transform.position,
                 Radius = 0.25f,
-                LayerMask = LayerMask.GetMask("Enemies")
+                LayerMask = LayerMask.GetMask("Default")
             });
         }
     }

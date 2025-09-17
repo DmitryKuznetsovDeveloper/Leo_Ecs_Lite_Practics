@@ -27,7 +27,13 @@ namespace ECS.Systems
                     continue;
                 }
 
-                _spawnService.Spawn(request, _gameWorld.Value);
+                var spawned = _spawnService.Spawn(request, _gameWorld.Value);
+
+                if (request.OwnerEntity >= 0)
+                {
+                    spawned.AddOrReplaceComponent(new Owner { Entity = request.OwnerEntity });
+                }
+                
             }
         }
     }

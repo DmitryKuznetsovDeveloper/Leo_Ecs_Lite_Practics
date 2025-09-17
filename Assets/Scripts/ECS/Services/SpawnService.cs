@@ -32,6 +32,7 @@ namespace ECS.Services
             }
 
             int id = world.NewEntity();
+            instance.BindEntityId(id); 
             var entity = new Entity(world, id);
             instance.Install(entity);
             return entity;

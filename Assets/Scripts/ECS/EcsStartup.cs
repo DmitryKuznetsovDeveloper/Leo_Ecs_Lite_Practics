@@ -28,10 +28,12 @@ namespace ECS
             _spawnService = new SpawnService();
             _systems = new EcsSystems(_worldGame, WorldNames.GAME)
                 .AddWorld(_worldEvents, WorldNames.EVENTS)
-                .Add(new OneFrameCleanupSystemGroup(_worldGame))
-                .Add(new OneFrameCleanupSystemGroup(_worldEvents))
+                .Add(new ArmySpawnSystem())
                 .Add(new PlayerInputSystem())
                 .Add(new PlayerFireSystem())
+                .Add(new VisionStopSystem())
+                .Add(new AutoFireSystem())
+                .Add(new MovementStateSystem())
                 .Add(new MovementSystem())
                 .Add(new FireRequestSystem())
                 .Add(new SpawnRequestSystem(_spawnService))
@@ -39,10 +41,15 @@ namespace ECS
                 .Add(new CollisionRequestSystem())
                 .Add(new DamageOnCollisionRequestSystem())
                 .Add(new ApplyDamageSystem())
+                .Add(new DeathSystem())
+                .Add(new DespawnAfterTimeSystem())
                 .Add(new DespawnSystem())
-                
+
                 //View
-                .Add(new TransformViewSystem());
+                .Add(new TransformViewSystem())
+
+                .Add(new OneFrameCleanupSystemGroup(_worldGame))
+                .Add(new OneFrameCleanupSystemGroup(_worldEvents));
 
 #if UNITY_EDITOR
             _systems.Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem());

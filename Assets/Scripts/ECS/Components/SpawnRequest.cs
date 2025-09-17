@@ -11,5 +11,6 @@ namespace ECS.Components
         public EntityProvider Prefab;
         public Vector3 Position;
         public Quaternion Rotation;
+        public int OwnerEntity; 
     }
 }
